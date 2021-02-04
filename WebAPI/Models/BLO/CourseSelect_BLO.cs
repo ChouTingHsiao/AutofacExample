@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WebAPI.Models.Attributes;
 using WebAPI.Models.DTO;
 using WebAPI.Models.Interfaces.BLO;
@@ -12,28 +10,40 @@ namespace WebAPI.Models.DAO
     [AutoInject]
     public class CourseSelect_BLO : ICourseSelect_BLO
     {
-        private readonly IMaintain<Course> _Class_DAO = null;
-        private readonly IMaintain<Student> _Student_DAO = null;
 
-        public CourseSelect_BLO(IMaintain<Course> Class_DAO,
-                                IMaintain<Student> Student_DAO)
+        private readonly ICourse_DAO _Course_DAO;
+        private readonly IStudent_DAO _Student_DAO;
+
+        public CourseSelect_BLO(ICourse_DAO Course_DAO,
+                                IStudent_DAO Student_DAO)
         {
-            _Class_DAO = Class_DAO;
+            _Course_DAO = Course_DAO;
             _Student_DAO = Student_DAO;
         }
 
+        public List<Course> GetAllCourse()
+        {
+            return _Course_DAO.GetAll();
+        }
+
+        public List<Student> GetAllStudent()
+        {
+            return _Student_DAO.GetAll();
+        }
+        
         public string Select(Course item)
         {
-            List<Course> Course_Select = _Class_DAO.GetAll().Where(x => x.StudentID == item.StudentID).ToList();
+            List<Course> Course_Select = _Course_DAO.GetAll().Where(x => x.StudentID == item.StudentID).ToList();
 
-            if (Course_Select.Where(x => x.CourseID == item.CourseID).Count() > 0)
+            if (Course_Select.Any(x => x.CourseID == item.CourseID))
             {
                 return "Course Cant Select Twice";
             }
 
-            _Class_DAO.Create(item);
+            _Course_DAO.Create(item);
 
             return "Course Select Success";
         }
+
     }
 }
