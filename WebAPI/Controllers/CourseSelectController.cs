@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WebAPI.Models.DTO;
-using WebAPI.Models.Interfaces.BLO;
+using WebAPI.Core.DTO;
+using WebAPI.Core.Interfaces.BLO;
 
 namespace WebAPI.Controllers
 {

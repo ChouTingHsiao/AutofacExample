@@ -4,9 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Reflection;
-using WebAPI.Models.Attributes;
-using WebAPI.Models.DAO;
-using WebAPI.Models.Interfaces.DAO;
+using WebAPI.Core.Attributes;
 
 namespace WebAPI
 {
@@ -22,8 +20,7 @@ namespace WebAPI
 
             builder.Populate(services);
 
-            var assembly = AppDomain.CurrentDomain.GetAssemblies();
-
+            var assembly = new Assembly[] { Assembly.Load("WebAPI.Core") };
 
             //注册泛型
             //builder.RegisterGeneric(typeof(IMaintain<>))
@@ -34,18 +31,15 @@ namespace WebAPI
             //      .As<IClass_DAO>()
             //      .InstancePerLifetimeScope();
 
-
             builder.RegisterAssemblyTypes(assembly)
                    .Where(t => t.GetCustomAttribute<AutoInject>() != null)
                    .AsImplementedInterfaces()
                    .InstancePerLifetimeScope();
 
-
-
-
             Container = builder.Build();
 
             return new AutofacServiceProvider(Container);
+
         }
 
 

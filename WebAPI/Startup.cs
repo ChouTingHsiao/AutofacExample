@@ -10,8 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using WebAPI.Models.DAO;
-using WebAPI.Models.Interfaces.DAO;
+using WebAPI.Core.DAO;
+using WebAPI.Core.Interfaces.DAO;
 
 namespace WebAPI
 {
