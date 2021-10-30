@@ -19,9 +19,9 @@ namespace WebAPI.Core.DAO
         {
             List<Student> StudentList = new List<Student>();
 
-            StudentList.Add( new Student{ID=1,Name="張三",Age=19 });
+            StudentList.Add( new Student{Id = 1, Name = "張三", Age = 19 });
 
-            StudentList.Add( new Student{ID=2,Name="李四",Age=20 });
+            StudentList.Add( new Student{Id = 2, Name = "李四", Age = 20 });
 
             return StudentList;
         }

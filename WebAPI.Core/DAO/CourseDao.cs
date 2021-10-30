@@ -17,22 +17,18 @@ namespace WebAPI.Core.DAO
 
         public List<Course> GetAll()
         {
-
             List<Course> CourseList = new List<Course>();
 
-            CourseList.Add(new Course {CourseID = 1 ,Name = "微積分", Score=2,StudentID=1});
+            CourseList.Add(new Course {Id = 1, Name = "微積分", Score = 2, StudentId = 1});
 
-            CourseList.Add(new Course {CourseID = 2, Name = "管理學", Score=3,StudentID=1});
+            CourseList.Add(new Course {Id = 2, Name = "管理學", Score = 3, StudentId = 1});
 
             return CourseList;
-
         }
 
         public void Create(Course item)
         {
-
             _CourseList.Add(item);
-
         }
     }
 }

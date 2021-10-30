@@ -28,8 +28,8 @@ namespace WebAPI.Controllers
             return _CourseSelect_BLO.GetAllStudent();
         }
 
-        [HttpPost]
-        public string SelectCourse([FromBody]Course item)
+        [HttpGet]
+        public string SelectCourse([FromQuery]Course item)
         {
             return _CourseSelect_BLO.Select(item);
         }
