@@ -12,24 +12,13 @@ namespace WebAPI
     {
         public static IContainer Container { get; private set; }
 
-
         public static IServiceProvider AddAutofac(this IServiceCollection services, IHostingEnvironment env)
         {
-
             ContainerBuilder builder = new ContainerBuilder();//实例化 AutoFac  容器  
 
             builder.Populate(services);
 
             var assembly = new Assembly[] { Assembly.Load("WebAPI.Core") };
-
-            //注册泛型
-            //builder.RegisterGeneric(typeof(IMaintain<>))
-            //       .As(typeof(IMaintain<>))
-            //       .InstancePerLifetimeScope();
-
-            //builder.RegisterType<Class_DAO>()
-            //      .As<IClass_DAO>()
-            //      .InstancePerLifetimeScope();
 
             builder.RegisterAssemblyTypes(assembly)
                    .Where(t => t.GetCustomAttribute<AutoInject>() != null)
@@ -39,17 +28,11 @@ namespace WebAPI
             Container = builder.Build();
 
             return new AutofacServiceProvider(Container);
-
         }
-
 
         public static void DisposeAutofac(this IApplicationLifetime appLifetime)
         {
-
             appLifetime.ApplicationStopped.Register(() => Container.Dispose());
-
         }
-
-
     }
 }

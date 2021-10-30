@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Core.DTO;
 using WebAPI.Core.Interfaces.BLO;
@@ -12,10 +9,9 @@ namespace WebAPI.Controllers
     [ApiController]
     public class CourseSelectController : ControllerBase
     {
-
-        private readonly ICourseSelect_BLO _CourseSelect_BLO;
+        private readonly ICourseSelectBlo _CourseSelect_BLO;
        
-        public CourseSelectController(ICourseSelect_BLO CourseSelect_BLO)
+        public CourseSelectController(ICourseSelectBlo CourseSelect_BLO)
         {
             _CourseSelect_BLO = CourseSelect_BLO;
         }
@@ -37,6 +33,5 @@ namespace WebAPI.Controllers
         {
             return _CourseSelect_BLO.Select(item);
         }
-
     }
 }
