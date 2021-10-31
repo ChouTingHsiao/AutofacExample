@@ -21,7 +21,7 @@ namespace WebAPI
             var assembly = new Assembly[] { Assembly.Load("WebAPI.Core") };
 
             builder.RegisterAssemblyTypes(assembly)
-                   .Where(t => t.GetCustomAttribute<AutoInject>() != null)
+                   .Where(t => t.GetCustomAttribute<AutoInjectAttribute>() != null)
                    .AsImplementedInterfaces()
                    .InstancePerLifetimeScope();
 

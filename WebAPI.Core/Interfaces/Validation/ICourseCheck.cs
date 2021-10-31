@@ -4,6 +4,6 @@ namespace WebAPI.Core.Interfaces.Validation
 {
     public interface ICourseCheck
     {
-        CourseCheckState Check(CourseCheckState courseSelect);
+        CourseCheckState Check(CourseCheckState courseCheckState);
     }
 }

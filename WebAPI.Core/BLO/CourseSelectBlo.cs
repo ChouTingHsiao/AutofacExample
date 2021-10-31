@@ -42,7 +42,7 @@ namespace WebAPI.Core.DAO
                 IsValidate = true
             };
 
-            Student student = _studentDao.GetAll().Where(x => x.Id == item.StudentId).SingleOrDefault();
+            Student student = _studentDao.GetAll().SingleOrDefault(x => x.Id == item.StudentId);
 
             List<Course> courseSelected = _courseDao.GetAll().Where(x => x.StudentId == student.Id).ToList();
 
